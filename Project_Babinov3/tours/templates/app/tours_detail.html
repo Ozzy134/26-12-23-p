@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Туристическое агенство "Голубой огонек"</title>
+    {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <nav>
+    <a href="{% url 'tours_list' %}">Главная</a>
+    <a href="{% url 'tours_add' %}">Добавить тур</a>
+  </nav>
+  <main>
+      <h2>{{ tours.title }}</h2>
+      <p>Cтрана: {{ tours.countries }}</p>
+      <p>Отель: {{ tours.hotel }}</p>
+      <p>Кол-во человек: {{ tours.chel }}</p>
+      <p>Цена: {{ tours.price }}</p>
+      <p>Экскурсии: {{ tours.list }}</p>
+      <a href="{% url 'tours_edit' pk=tour.pk %}">Edit</a>
+      <a href="{% url 'tours_delete' pk=tour.pk %}">Delete</a>
+  </main>
+</body>
+</html>

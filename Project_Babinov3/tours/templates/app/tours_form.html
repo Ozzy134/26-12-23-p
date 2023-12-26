@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Туристическое агенство "Голубой огонек"</title>
+    {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <nav>
+    <a href="{% url 'tours_list' %}">Главная</a>
+    <a href="{% url 'tours_add' %}">Добавить тур</a>
+  </nav>
+  <main>
+      {% block content %}
+      <h2>{% if form.instance.pk %}Edit Tours{% else %}Add Tours{% endif %}</h2>
+      <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+      </form>
+        {% endblock %}
+  </main>
+</body>
+</html>
